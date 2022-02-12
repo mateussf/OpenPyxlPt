@@ -1,10 +1,5 @@
-from copyreg import constructor
-from dataclasses import dataclass
-from sqlite3 import Row
-import this
 from openpyxl import Workbook
 from openpyxl.utils import get_column_letter
-#from openpyxl import load_workbook
 from openpyxl.styles import Font, Alignment, PatternFill
 from openpyxl.reader.excel import load_workbook
 from openpyxl.styles.borders import Border, Side
@@ -26,12 +21,12 @@ class Planila():
 
     def __init__(self, NomeArquivo = ""):
         if (os.path.isfile(NomeArquivo + '.xlsx')):
-            this.Arquivo = load_workbook(NomeArquivo + '.xlsx')
+            self.Arquivo = load_workbook(NomeArquivo + '.xlsx')
         else:
             Arquivo = Workbook()
             Arquivoxlsx = NomeArquivo + '.xlsx'
             Arquivo.save(Arquivoxlsx)
-            this.Arquivo = Arquivo
+            self.Arquivo = Arquivo
 
     def CriaAba(self, NomeAba = "", Sobrescrever = True):
         if NomeAba in self.Arquivo.sheetnames:
